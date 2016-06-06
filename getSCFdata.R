@@ -1,7 +1,3 @@
-#rm(list=ls(all=TRUE)) 
-
-
-
 source("SCFhelper.R")
 library(plotly)
 
@@ -10,7 +6,7 @@ url_base = "https://www.seeclickfix.com/api/v2/issues?page="
 url311discover = "https://www.seeclickfix.com/open311/v2/29/discovery.json"
 url311req = "https://www.seeclickfix.com/open311/v2/29/requests.json"
 page_num = 1
-per_page = 200
+per_page = 75
 number_of_pages = 3
 
 
