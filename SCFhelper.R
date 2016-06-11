@@ -33,12 +33,13 @@ plot_scf_issues<- function(dsp)
 {
   dsp$new_created_at =  ymd_hms(dsp$created_at)
   dsp$new_acknowledged_at =  ymd_hms(dsp$acknowledged_at)
-  p = ggplot(dsp, aes(new_created_at, new_acknowledged_at)) + 
+  p = ggplot(dsp, aes(new_created_at, new_acknowledged_at, z = description)) + 
     scale_x_datetime(date_breaks = "5 min")+
     scale_y_datetime(date_breaks = "5 min")+
     theme(axis.text.x  = element_text(angle=90, vjust=0.5, size=8)) +
     geom_point(aes(color = status), alpha = 0.7) 
-  (gg <- ggplotly(p))
+  gg <- ggplotly(p, tooltip = c("x", "y", "z"))
+  return(gg)
 }
 
 get_open_311 = function(url)
