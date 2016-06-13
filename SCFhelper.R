@@ -6,7 +6,6 @@ library(lubridate) # for working withe dates and times
 get_page_of_results <- function(url,page_num,per_page)
 {
   final_url = paste0(url,page_num,"&per_page=", per_page)
-  #print (final_url)
   issue_list = fromJSON(final_url, flatten =TRUE)
   return (issue_list)
 }
@@ -18,9 +17,6 @@ get_multiple_pages_of_issues<- function(url,page_num,per_page,number_of_pages)
   {
     res = get_page_of_results(url,i,per_page)
     rissues = res$issues
-    # print("ncol")
-    # print(names(rissues))
-    # ncol(rissues)
     df = bind_rows(df,rissues)
   }
   

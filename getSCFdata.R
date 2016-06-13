@@ -18,9 +18,9 @@ d_single_page =get_page_of_results(url_base,page_num,per_page )
 
 
 dmultp =get_multiple_pages_of_issues(url_base,page_num,per_page,number_of_pages)
-#save(dmultp,file="dmultp20160605_latest_5000.Rda")
-load("dmultp20160605_latest_5000.Rda")
-plot_scf_issues(dmultp)
+res_filename = paste0("dmultp", date(), "last_",(per_page*number_of_pages), ".Rda")
+save(dmultp,file=res_filename)
+#load("dmultp20160605_latest_5000.Rda")
 
 gg = plot_scf_issues(dmultp)
 gg
