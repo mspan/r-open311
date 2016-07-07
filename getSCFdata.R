@@ -2,9 +2,20 @@ source("SCFhelper.R")
 library(plotly)
 library(feather)
 
+which_server = "prod"  # select "prod" or "test". 
+
+if (which_server =="test") {
 url_base = "https://test.seeclickfix.com/api/v2/issues?page="
 url311discover = "https://test.seeclickfix.com/open311/v2/29/discovery.json"
 url311req = "https://test.seeclickfix.com/open311/v2/29/requests.json"
+} else if (which_server =="prod") {
+  url_base = "https://www.seeclickfix.com/api/v2/issues?page="
+  url311discover = "https://www.seeclickfix.com/open311/v2/29/discovery.json"
+  url311req = "https://www.seeclickfix.com/open311/v2/29/requests.json"  
+  
+} else {
+  warning('invalid server selected. choose prod or test')
+} 
 page_num = 1
 per_page = 100
 number_of_pages = 3
